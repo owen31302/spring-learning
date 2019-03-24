@@ -1,15 +1,16 @@
-package com.owen.springtest.hibernatemapping.eager_vs_lazy.demo;
+package com.owen.springtest.hibernatemapping._3_eager_vs_lazy.demo;
 
 
-import com.owen.springtest.hibernatemapping.one_to_many.entity.Course;
-import com.owen.springtest.hibernatemapping.one_to_many.entity.Instructor;
-import com.owen.springtest.hibernatemapping.one_to_many.entity.InstructorDetail;
+import com.owen.springtest.hibernatemapping._2_one_to_many.entity.Course;
+import com.owen.springtest.hibernatemapping._2_one_to_many.entity.Instructor;
+import com.owen.springtest.hibernatemapping._2_one_to_many.entity.InstructorDetail;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 
-public class EagerLazyDemo {
+public class FetchJoinDemo {
 
 	public static void main(String[] args) {
 
@@ -29,26 +30,30 @@ public class EagerLazyDemo {
 			// start a transaction
 			session.beginTransaction();
 
+			// Resolve the issue: Option2 -> Hibernate query with HQL
+
 			// get the instructor from db
 			int theId = 1;
-			Instructor instructor = session.get(Instructor.class, theId);
+
+			Query<Instructor> query =
+							session.createQuery("select i from Instructor i " +
+									      			"join fetch i.courses " +
+													"where i.id=:theInstructorId",
+							Instructor.class);
+
+			// set parameter on query
+			query.setParameter("theInstructorId", theId);
+
+			Instructor instructor = query.getSingleResult();
 
 			System.out.println("[Owen] Instructor: " + instructor);
 
-			// break lazy loading by closing the session
-			//session.close();
-
-			// lazy loading happens here
-			System.out.println("[Owen] Courses: " + instructor.getCourses());
 
 			// commit transaction
 			session.getTransaction().commit();
 
 			session.close();
 
-			// Resolve the issue: Option1 -> call the getter method while session in open,
-			// and the later use will still be valid.
-			// This works fine because the data was loaded at line 42.
 			System.out.println("[Owen] Courses: " + instructor.getCourses());
 
 			System.out.println("[Owen] Done!");

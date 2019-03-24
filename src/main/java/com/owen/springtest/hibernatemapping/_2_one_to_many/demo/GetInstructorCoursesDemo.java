@@ -1,9 +1,9 @@
-package com.owen.springtest.hibernatemapping.one_to_many.demo;
+package com.owen.springtest.hibernatemapping._2_one_to_many.demo;
 
 
-import com.owen.springtest.hibernatemapping.one_to_many.entity.Course;
-import com.owen.springtest.hibernatemapping.one_to_many.entity.Instructor;
-import com.owen.springtest.hibernatemapping.one_to_many.entity.InstructorDetail;
+import com.owen.springtest.hibernatemapping._2_one_to_many.entity.Course;
+import com.owen.springtest.hibernatemapping._2_one_to_many.entity.Instructor;
+import com.owen.springtest.hibernatemapping._2_one_to_many.entity.InstructorDetail;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

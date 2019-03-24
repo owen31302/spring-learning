@@ -1,4 +1,4 @@
-package com.owen.springtest.hibernatemapping.one_to_one.demo;
+package com.owen.springtest.hibernatemapping._1_one_to_one.demo;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,4 +1,4 @@
-package com.owen.springtest.hibernatemapping.one_to_many.entity;
+package com.owen.springtest.hibernatemapping._4_one_to_many_uni.entity;
 
 import javax.persistence.*;
 
