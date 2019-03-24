@@ -1,11 +1,12 @@
-package com.owen.springtest.hibernatemapping.one_to_one_uni.demo;
+package com.owen.springtest.hibernatemapping.one_to_many.demo;
 
-import com.owen.springtest.hibernatemapping.one_to_one_uni.entity.Instructor;
-import com.owen.springtest.hibernatemapping.one_to_one_uni.entity.InstructorDetail;
+
+import com.owen.springtest.hibernatemapping.one_to_many.entity.Course;
+import com.owen.springtest.hibernatemapping.one_to_many.entity.Instructor;
+import com.owen.springtest.hibernatemapping.one_to_many.entity.InstructorDetail;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-
 
 
 public class CreateDemo {
@@ -17,6 +18,7 @@ public class CreateDemo {
 								.configure("hibernate.cfg.xml")
 								.addAnnotatedClass(Instructor.class)
 								.addAnnotatedClass(InstructorDetail.class)
+								.addAnnotatedClass(Course.class)
 								.buildSessionFactory();
 		
 		// create session
@@ -25,23 +27,13 @@ public class CreateDemo {
 		try {			
 			
 			// create the objects
+			Instructor tempInstructor =
+					new Instructor("Madhu", "Patel", "madhu@luv2code.com");
 
-			Instructor tempInstructor = 
-					new Instructor("Chad", "Darby", "darby@luv2code.com");
-			
 			InstructorDetail tempInstructorDetail =
 					new InstructorDetail(
-							"http://www.luv2code.com/youtube",
-							"Luv 2 code!!!");		
-
-			
-//			Instructor tempInstructor =
-//					new Instructor("Madhu", "Patel", "madhu@luv2code.com");
-//
-//			InstructorDetail tempInstructorDetail =
-//					new InstructorDetail(
-//							"http://www.youtube.com",
-//							"Guitar");
+							"http://www.youtube.com",
+							"Guitar");
 			
 			// associate the objects
 			tempInstructor.setInstructorDetail(tempInstructorDetail);
@@ -63,6 +55,8 @@ public class CreateDemo {
 			System.out.println("Done!");
 		}
 		finally {
+			session.close();
+
 			factory.close();
 		}
 	}

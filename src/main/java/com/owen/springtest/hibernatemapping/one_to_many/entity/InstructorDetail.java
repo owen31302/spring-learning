@@ -1,4 +1,4 @@
-package com.owen.springtest.hibernatemapping.one_to_one_uni.entity;
+package com.owen.springtest.hibernatemapping.one_to_many.entity;
 
 import javax.persistence.*;
 
@@ -37,7 +37,7 @@ public class InstructorDetail {
 	private Instructor instructor;
 
 	public InstructorDetail() {
-		
+
 	}
 
 	public InstructorDetail(String youtubeChannel, String hobby) {

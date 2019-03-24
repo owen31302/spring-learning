@@ -1,4 +1,4 @@
-package com.owen.springtest.hibernatemapping.one_to_one_uni.entity;
+package com.owen.springtest.hibernatemapping.one_to_one.entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;

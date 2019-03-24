@@ -11,8 +11,8 @@
 
         <!-- Switch schema (which schema you are going to use) -->
         <!--<property name="connection.url">jdbc:mysql://localhost:3306/hb_student_tracker?useSSL=false&amp;serverTimezone=UTC</property>-->
-        <property name="connection.url">jdbc:mysql://localhost:3306/hb-01-one-to-one-uni?useSSL=false&amp;serverTimezone=UTC</property>
-
+        <!--<property name="connection.url">jdbc:mysql://localhost:3306/hb-01-one-to-one-uni?useSSL=false&amp;serverTimezone=UTC</property>-->
+        <property name="connection.url">jdbc:mysql://localhost:3306/hb-03-one-to-many?useSSL=false&amp;serverTimezone=UTC</property>
 
         <property name="connection.username">hbstudent</property>
         <property name="connection.password">hbstudent</property>
